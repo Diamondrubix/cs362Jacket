@@ -103,7 +103,7 @@ public class Server extends Thread{
                     for (PrintWriter writer : writers) {
                         //writer.println("MESSAGE " + name + ": " + input);
                         if(input.startsWith("PI:")){
-                            phoneState = Integer.parseInt(input.substring(4));
+                            phoneState = Integer.parseInt(input.substring(3));
                             System.out.println(phoneState);
                             writer.println(phoneState);
                         }
