@@ -23,6 +23,7 @@ io.on('connection', function(socket){
 
     
     socket.on('login', function(msg){
+        console.log("test");
         user = msg.username;
         pass = msg.password;
         //console.log(user+",,,,"+pass)
@@ -125,7 +126,7 @@ app.post('/message',function(req,res){
 app.post('/music',function(req,res){
     key = req.body.key;
     action =  req.body.action;
-    
+    console.log(req.body);
     io.to(key).emit('music', {action:action});
     res.send('OK');
 });

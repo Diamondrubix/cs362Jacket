@@ -1,7 +1,8 @@
 {
-  "dependencies":
-  {
-    "express":"*",
-    "body-parser":"*"
+  "dependencies": {
+    "body-parser": "*",
+    "express": "*",
+    "mongodb": "^3.1.9",
+    "socket.io": "^2.1.1"
   }
 }
