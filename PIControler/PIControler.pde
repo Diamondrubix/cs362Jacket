@@ -2,7 +2,8 @@ import processing.serial.*;
 
 Client client;
 Serial myPort;
-
+String ip = "192.168.43.91";
+int port = 3001;
 void setup(){
   //surface.setVisible(false);
 size(900, 600);
@@ -13,7 +14,7 @@ fill(0,100,255);
   println("starting pi controler");
   
   try {
-      client = new Client("localhost", 3001);
+      client = new Client(ip, port);
   //myPort = new Serial(this, Serial.list()[0], 9600);
   //myPort.bufferUntil('\n');
 } catch (IOException e) {
