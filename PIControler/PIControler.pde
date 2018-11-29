@@ -5,12 +5,14 @@ Serial myPort;
 String ip = "localhost";
 int port = 3001;
 void setup(){
-  //surface.setVisible(false);
+  surface.setVisible(false);
 size(900, 600);
 background(255,255,255);
 stroke(255,255,255);
 fill(0,100,255);
-
+println(Serial.list());
+    myPort = new Serial(this, Serial.list()[0], 9600);
+     myPort.bufferUntil('\n');
   println("starting pi controler");
   
   try {
@@ -20,7 +22,7 @@ fill(0,100,255);
 } catch (IOException e) {
 }
 
-
+println("does this work");
       
 }
 
@@ -52,10 +54,13 @@ void serialEvent (Serial myPort) {
     inString = trim(inString);
     if(inString.equals("toggle")){
       client.sendData("PI:0");
+      println("pi 0");
     }else if(inString.equals("next")){
       client.sendData("PI:1");
-    }else if(inString.equals("previous")){
+      println("pi 1");
+    }else if(inString.equals("prev")){
       client.sendData("PI:2");
+      println("pi 2");
     }else{
       println("this should not run");
     }
