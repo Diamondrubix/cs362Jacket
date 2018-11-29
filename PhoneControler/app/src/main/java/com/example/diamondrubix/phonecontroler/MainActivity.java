@@ -16,28 +16,48 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        AudioManager mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        //AudioManager mAudioManager = (AudioManager) this.getSystemService(Context.AUDIO_SERVICE);
+        Log.e("Network", "started");
 
-        client = new Client("192.168.43.91", 3001);
-        String d = "";
-        //while(true) {
-            d = client.getData();
+        Thread thread = new Thread(new Runnable() {
+
+            @Override
+            public void run() {
+                Log.e("Network", "run started");
+                try  {
+                    Log.e("Network", "try started");
+                    AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
+                    client = new Client("10.4.211.193", 3001);
+                    String d = "";
+                    //while(true) {
+                    d = client.getData();
 
 
-            if (d.equals("1")) {
-                if (mAudioManager.isMusicActive()) {
+                    if (d.equals("1")) {
+                        Log.e("Network", "IT WORKED!!!22");
+                        if (mAudioManager.isMusicActive()) {
 
-                    Intent i = new Intent("com.android.music.musicservicecommand");
+                            Intent i = new Intent("com.android.music.musicservicecommand");
 
-                    i.putExtra("command", "pause");//pause play next previouse
-                    MainActivity.this.sendBroadcast(i);
-                } else {
-                    Intent i = new Intent("com.android.music.musicservicecommand");
+                            i.putExtra("command", "pause");//pause play next previouse
+                            MainActivity.this.sendBroadcast(i);
+                        } else {
+                            Intent i = new Intent("com.android.music.musicservicecommand");
 
-                    i.putExtra("command", "play");
-                    MainActivity.this.sendBroadcast(i);
+                            i.putExtra("command", "play");
+                            MainActivity.this.sendBroadcast(i);
+                        }
+                    }
+                } catch (Exception e) {
+                    e.printStackTrace();
                 }
             }
+        });
+
+
+        thread.start();
+
+
         //}
         //}
     }

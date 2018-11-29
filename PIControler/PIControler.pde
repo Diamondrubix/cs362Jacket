@@ -2,7 +2,7 @@ import processing.serial.*;
 
 Client client;
 Serial myPort;
-String ip = "192.168.43.91";
+String ip = "localhost";
 int port = 3001;
 void setup(){
   //surface.setVisible(false);
