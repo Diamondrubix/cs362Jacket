@@ -30,16 +30,16 @@ void draw(){
 
 void keyPressed(){
   if(key == 'a'){
+    println("pi 2");
+    client.sendData("PI:2");
+  }
+  if(key =='s'){
     println("pi 0");
     client.sendData("PI:0");
   }
-  if(key =='s'){
+  if(key == 'd'){
     println("pi 1");
     client.sendData("PI:1");
-  }
-  if(key == 'd'){
-    println("pi 2");
-    client.sendData("PI:2");
   }
   
 }

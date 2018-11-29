@@ -24,30 +24,41 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void run() {
                 Log.e("Network", "run started");
-                try  {
+                try {
                     Log.e("Network", "try started");
                     AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-                    client = new Client("10.4.211.193", 3001);
+                    client = new Client("10.107.211.188", 3001);
                     String d = "";
                     //while(true) {
-                    d = client.getData();
+                    while(!d.equals("5")){
+                        d = client.getData();
+                        if(d.equals("0")) {
+                            Log.e("Network", "IT WORKED!!!22");
 
+                            if (mAudioManager.isMusicActive()) {
 
-                    if (d.equals("1")) {
-                        Log.e("Network", "IT WORKED!!!22");
-                        if (mAudioManager.isMusicActive()) {
+                                Intent i = new Intent("com.android.music.musicservicecommand");
 
+                                i.putExtra("command", "pause");//pause play next previouse
+                                MainActivity.this.sendBroadcast(i);
+                            } else {
+                                Intent i = new Intent("com.android.music.musicservicecommand");
+
+                                i.putExtra("command", "play");
+                                MainActivity.this.sendBroadcast(i);
+                            }
+                        }else if(d.equals("1")){
                             Intent i = new Intent("com.android.music.musicservicecommand");
 
-                            i.putExtra("command", "pause");//pause play next previouse
+                            i.putExtra("command", "next");
                             MainActivity.this.sendBroadcast(i);
-                        } else {
+                        }else if(d.equals("2")){
                             Intent i = new Intent("com.android.music.musicservicecommand");
 
-                            i.putExtra("command", "play");
+                            i.putExtra("command", "previous");
                             MainActivity.this.sendBroadcast(i);
                         }
-                    }
+                }
                 } catch (Exception e) {
                     e.printStackTrace();
                 }
