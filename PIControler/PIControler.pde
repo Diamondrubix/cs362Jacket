@@ -7,7 +7,7 @@ int port = 3001;
 void setup(){
   surface.setVisible(false);
 size(900, 600);
-background(255,255,255);
+background(255,255,255); 
 stroke(255,255,255);
 fill(0,100,255);
 println(Serial.list());

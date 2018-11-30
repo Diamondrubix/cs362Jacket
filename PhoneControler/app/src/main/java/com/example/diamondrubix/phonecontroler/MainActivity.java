@@ -47,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
                                 i.putExtra("command", "play");
                                 MainActivity.this.sendBroadcast(i);
                             }
+
                         }else if(d.equals("1")){
                             Intent i = new Intent("com.android.music.musicservicecommand");
 
