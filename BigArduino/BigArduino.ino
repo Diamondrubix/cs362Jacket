@@ -1,6 +1,9 @@
 
 const int trigPin = 2;
 const int echoPin = 3;
+const int buzzer = 8;
+const int passiveBuzzer = 9;
+int toneMap;
 
 
 #define PIN            6
@@ -45,34 +48,34 @@ void loop() {
   }
 
   
-  if(inches>3){
+  if(inches<3){
     pixels.setPixelColor(0,pixels.Color(100,0,100));
   }
-  if(inches>6){
+  if(inches<6){
     pixels.setPixelColor(1,pixels.Color(100,0,100));
   }
-  if(inches>9){
+  if(inches<9){
     pixels.setPixelColor(2,pixels.Color(100,0,100));
   }
-    if(inches>12){
+    if(inches<12){
     pixels.setPixelColor(3,pixels.Color(100,0,100));
   }
-    if(inches>15){
+    if(inches<15){
     pixels.setPixelColor(4,pixels.Color(100,0,100));
   }
-      if(inches>18){
+      if(inches<18){
     pixels.setPixelColor(5,pixels.Color(100,0,100));
   }
-      if(inches>21){
+      if(inches<21){
     pixels.setPixelColor(6,pixels.Color(100,0,100));
   }
-      if(inches>24){
+      if(inches<24){
     pixels.setPixelColor(7,pixels.Color(100,0,100));
   }
-        if(inches>27){
+        if(inches<27){
     pixels.setPixelColor(8,pixels.Color(100,0,100));
   }
-        if(inches>30){
+        if(inches<30){
     pixels.setPixelColor(9,pixels.Color(100,0,100));
   }
   
@@ -81,7 +84,20 @@ void loop() {
   pixels.show();
     // establish variables for duration of the ping, 
   // and the distance result in inches and centimeters:
-
+  
+  toneMap = map(inches, 3, 30, 380, 200);
+  //digitalWrite(buzzer,HIGH);
+  //tone(passiveBuzzer, 261);
+  
+  if(inches<20){
+    //digitalWrite(passiveBuzzer,HIGH);
+    tone(passiveBuzzer, toneMap);
+  }else{
+    noTone(passiveBuzzer);
+    //digitalWrite(passiveBuzzer,LOW);
+  }
+  
+  
 
   // The sensor is triggered by a HIGH pulse of 10 or more microseconds.
   // Give a short LOW pulse beforehand to ensure a clean HIGH pulse:
