@@ -1,4 +1,5 @@
-
+int leftB = 6;
+int ri ghtB = 7;
 int prevB = 8;
 int togB = 9;
 int nextB = 10;
@@ -12,8 +13,8 @@ void setup() {
   pinMode(togB, INPUT);
   pinMode(nextB, INPUT);
   Serial.begin(9600);
-  
-  
+
+
 }
 
 void loop() {
@@ -23,7 +24,7 @@ void loop() {
   next = digitalRead(nextB);
 
 
-  
+
   if(tog && pressed == false){
     Serial.println("toggle");
     pressed = true;
@@ -39,7 +40,7 @@ void loop() {
   }else{
     pressed = false;
   }
-  
-  
+
+
 
 }
