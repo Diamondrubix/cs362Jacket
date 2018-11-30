@@ -5,7 +5,7 @@ Serial myPort;
 String ip = "localhost";
 int port = 3001;
 void setup(){
-  surface.setVisible(false);
+ surface.setVisible(false);
 size(900, 600);
 background(255,255,255); 
 stroke(255,255,255);
@@ -62,7 +62,7 @@ void serialEvent (Serial myPort) {
       client.sendData("PI:2");
       println("pi 2");
     }else{
-      println("this should not run");
+      println("this should not run "+inString);
     }
   }
 }
