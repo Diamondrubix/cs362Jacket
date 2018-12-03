@@ -27,7 +27,7 @@ public class MainActivity extends AppCompatActivity {
                 try {
                     Log.e("Network", "try started");
                     AudioManager mAudioManager = (AudioManager) getSystemService(Context.AUDIO_SERVICE);
-                    client = new Client("10.107.211.188", 3001);
+                    client = new Client("10.65.216.157", 3001);
                     String d = "";
                     //while(true) {
                     while(!d.equals("5")){
